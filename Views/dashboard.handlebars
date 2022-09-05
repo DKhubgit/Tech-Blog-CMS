@@ -9,10 +9,23 @@
 
 <div class="collapse" id="collapseCreate">
   <div class="card card-body mx-auto mt-3" style="width: 750px;">
-    Placeholder for adding a new post!
+    <form action="/dashboard" method="POST">
+      <div class="mb-3">
+        <label for="postTitle" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title">
+      </div>
+      <div class="mb-3">
+        <label for="postContent" class="form-label">Subject</label>
+        <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+      </div>
+       <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </div>
 </div>
 
 <div>
     {{! for each item in blog post data table, output it as a card from partials. Also have the update and delete buttons on partials}}
+    {{#each newPosts}}
+    {{> posts}}
+    {{/each}}
 </div>

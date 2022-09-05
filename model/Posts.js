@@ -22,15 +22,10 @@ Posts.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    }
 },
 {
     sequelize,
     freezeTableName: true,
-    timestamps: false,
     modelName: 'posts',
 }
 );
