@@ -1,8 +1,16 @@
 const router = require('express').Router();
 const Posts = require('../model/Posts');
 
-router.get('/', (req,res) => {
-    res.render('homepage');
+router.get('/', async (req,res) => {
+    try {
+        const posts = await Posts.findAll();
+        const newPosts = posts.map((item) => item.get({plain: true}));
+        // console.log(newPosts);
+        
+        res.status(200).render('homepage', { newPosts });
+    } catch (err) {
+        res.status(401).json(err);
+    }
 })
 
 router.get('/login', (req,res) => {
@@ -44,6 +52,10 @@ router.post('/dashboard', async (req,res) => {
     } catch (err) {
         res.status(401).json(err);
     }
+})
+
+router.put('/dashboard', (req,res) => {
+    
 })
 
 module.exports = router;
