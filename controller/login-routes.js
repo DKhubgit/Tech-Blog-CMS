@@ -2,11 +2,11 @@ const router = require('express').Router();
 const User = require('../model/User');
 const bcrypt = require('bcrypt');
 
-router.get('/login', (req,res) => {
+router.get('/', (req,res) => {
     res.render('login');
 })
 
-router.post('/login', async (req,res) => {
+router.post('/', async (req,res) => {
     try {
         const userData = await User.findOne({
             where: {
@@ -28,20 +28,6 @@ router.post('/login', async (req,res) => {
     } catch (err) {
         console.log(err)
         res.render('login', {messages: 'Username or Password is Incorrect!'})
-    }
-})
-
-router.get('/signup', (req,res) => {
-    res.render('signup');
-})
-
-router.post('/signup', async (req,res) => {
-    try {
-        const userData = {username: req.body.username, password: req.body.password};
-        await User.create(userData);
-        res.status(200).redirect('/login');
-    } catch (err) {
-        res.render ('signup', {messages: "Did not meet the criteria."});
     }
 })
 

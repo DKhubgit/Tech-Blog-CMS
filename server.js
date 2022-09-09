@@ -3,7 +3,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const routes = require('./routes');
-const sync = require('./seeds/index')
 require('dotenv').config();
 
 const app = express();
@@ -18,8 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
-
-
 
 app.listen(PORT, (req,res) => {
     console.log('Server Established!');
