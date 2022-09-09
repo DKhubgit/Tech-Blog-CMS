@@ -5,7 +5,9 @@
 
 <div>
     {{! for each item in blog post data table, output it as a card from partials. Also have the update and delete buttons on partials}}
-    {{#each newPosts}}
-    {{> homePosts}}
-    {{/each}}
+    {{#if newPosts}}
+      {{#each newPosts}}
+      {{> posts}}
+      {{/each}}
+    {{/if}}
 </div>
